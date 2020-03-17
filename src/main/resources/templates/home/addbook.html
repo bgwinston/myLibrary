@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:fragment="head">
+<head th:replace="fragments :: head"></head>
     <meta charset="UTF-8"/>
     <title></title>
+<nav th:replace="fragments :: navigation"></nav>
+
 </head>
 <body>
 <h2>goodbye</h2>
