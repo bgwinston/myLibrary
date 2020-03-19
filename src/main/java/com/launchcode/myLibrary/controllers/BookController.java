@@ -41,11 +41,13 @@ public class BookController {
     public String processbook() {
         return "home/index";
     }
+
     //Display authors.  Links of authors names, lead to their books
     @RequestMapping(value="author", method=RequestMethod.GET)
     public String displayauthor(){
         return "home/author";
     }
+
     @RequestMapping(value="author", method=RequestMethod.POST)
     public String processauthor(){
         return "home/author";
