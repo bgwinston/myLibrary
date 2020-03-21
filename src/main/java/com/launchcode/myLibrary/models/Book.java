@@ -1,10 +1,19 @@
 package com.launchcode.myLibrary.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Book {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
     @Size(min=2, max=100)
     @NotNull
     private String titlebook;
@@ -21,9 +30,10 @@ public class Book {
     @NotNull
     private String read1;
 
-    @Max(5)
     @NotNull
     private String rating;
+
+    public Book(){}
 
     public Book(String titlebook, String author, String genre, String read1, String rating) {
         this.titlebook = titlebook;
@@ -31,6 +41,10 @@ public class Book {
         this.genre = genre;
         this.read1 = read1;
         this.rating = rating;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitlebook() {
