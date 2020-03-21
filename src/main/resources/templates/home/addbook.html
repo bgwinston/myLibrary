@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-    <meta charset="UTF-8"/>
-    <title></title>
+<body class="container"></body>
+</br>
+</br>
+</br>
+<h1 th:text="${title}">Default Title</h1>
+
 <nav th:replace="fragments :: navigation"></nav>
 
 </head>
 <body>
-<h2>goodbye</h2>
+
+<form action="#" th:action="@{/home/addconfirmation}" th:object="${book}" method="post">
+        <table class="table">
+            <tr>
+                <th> Title</th>
+                <th> Author</th>
+                <th> Genre</th>
+                <th> Read?</th>
+                <th> Rating</th>
+            </tr>
+
+            <tr th:each="book : ${book}">
+                <td><input type= "text" th:field="*{titlebook}" required/></td>
+                <td><input type= "text" th:field="*{author}" required/></td>
+                <td><select th:field="*{genre}"required>
+                    <option value="fiction">Fiction</option>
+                    <option value="nonfiction">Non-Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="biography">Biography</option>
+                </select></td>
+                <td><select th:field="*{read1}" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select></td>
+                <td><select th:field="*{rating}" required>
+                    <option value="1star">*</option>
+                    <option value="2stars">* *</option>
+                    <option value="3stars">* * *</option>
+                    <option value="4stars">* * * *</option>
+                    <option value="5stars">* * * * *</option>
+                </select></td>
+            </tr>
+        </table>
+        <input type="submit" id="submitButton" th:value="Save">
+        <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
+</form>
 </body>
 </html>
