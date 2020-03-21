@@ -19,21 +19,11 @@ public class BookController {
     @Autowired
     private BookDao bookDao;
 
-    //show genre categories. Links of genres that will take you to books in genre.
-    @RequestMapping(value ="genre", method= RequestMethod.GET)
-    public String displaygenres(){
-        return "home/genre";
-    }
-
-    @RequestMapping(value="genre", method= RequestMethod.POST)
-    public String genres(){
-        return "home/genre";
-    }
-
     //Add book to the library
     @RequestMapping(value="addbook", method=RequestMethod.GET)
     public String displayaddbook(Model model){
         model.addAttribute("title","Add books");
+        model.addAttribute("book", new Book());
         return "home/addbook";
     }
 
@@ -45,6 +35,7 @@ public class BookController {
         }
         return "home/addconfirmation";
     }
+
     //View books in the library
     @RequestMapping(value="index", method=RequestMethod.GET)
     public String displaybook(Model model){
@@ -53,14 +44,4 @@ public class BookController {
         return "home/index";
     }
 
-    //Display authors.  Links of authors names, lead to their books
-    @RequestMapping(value="author", method=RequestMethod.GET)
-    public String displayauthor(){
-        return "home/author";
-    }
-
-    @RequestMapping(value="author", method=RequestMethod.POST)
-    public String processauthor(){
-        return "home/author";
-    }
 }

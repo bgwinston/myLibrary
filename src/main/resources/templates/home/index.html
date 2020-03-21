@@ -23,7 +23,6 @@
         <th>Have you Read it?</th>
         <th>Rating</th>
 
-
     </tr>
 
     <tr th:each="book : ${book}">
@@ -31,6 +30,8 @@
         <td th:text="${book.author}"></td>
         <td th:text="${book.genre}"></td>
         <td th:text="${book.read1}"></td>
+        <td th:text="${book.rating}"></td>
+
     </tr>
 
 </table>

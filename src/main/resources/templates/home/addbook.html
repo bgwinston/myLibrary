@@ -12,7 +12,8 @@
 </head>
 <body>
 
-<form action="#" th:action="@{/home/addconfirmation}" th:object="${book}" method="post">
+<form th:object="${book}" method="post">
+
         <table class="table">
             <tr>
                 <th> Title</th>
@@ -22,29 +23,37 @@
                 <th> Rating</th>
             </tr>
 
-            <tr th:each="book : ${book}">
-                <td><input type= "text" th:field="*{titlebook}" required/></td>
-                <td><input type= "text" th:field="*{author}" required/></td>
-                <td><select th:field="*{genre}"required>
+            <tr>
+                <td> <input type= "text" th:field="*{titlebook}" required/></td>
+                <td> <input type= "text" th:field="*{author}" required/></td>
+                <td>
+                    <select th:field="*{genre}"required>
                     <option value="fiction">Fiction</option>
                     <option value="nonfiction">Non-Fiction</option>
                     <option value="mystery">Mystery</option>
                     <option value="biography">Biography</option>
-                </select></td>
-                <td><select th:field="*{read1}" required>
+                    <input type= "text" placeholder="Write Genre not listed here."/>
+                    </select>
+                </td>
+                <td>
+                    <select th:field="*{read1}" required>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
-                </select></td>
-                <td><select th:field="*{rating}" required>
+                    </select>
+                </td>
+                <td><!--If read rating required--->
+                    <select th:field="*{rating}">
                     <option value="1star">*</option>
                     <option value="2stars">* *</option>
                     <option value="3stars">* * *</option>
                     <option value="4stars">* * * *</option>
                     <option value="5stars">* * * * *</option>
-                </select></td>
+                    </select>
+                </td>
             </tr>
         </table>
-        <input type="submit" id="submitButton" th:value="Save">
+
+    <input type="submit" id="submitButton" th:value="Save">
         <input type="reset" id="resetButton" name="reset" th:value="Reset"/>
 </form>
 </body>
