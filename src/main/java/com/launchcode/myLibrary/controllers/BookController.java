@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -28,12 +29,22 @@ public class BookController {
     }
 
     @RequestMapping(value="addbook", method=RequestMethod.POST)
-    public String addbook(@Valid Book newBook, Errors errors, Model model){
+    public String addbook(@Valid Book newBook, Errors errors, Model model, RedirectAttributes redirectAttributes, Book book){
         if (errors.hasErrors()){
             model.addAttribute("title","All books");
             return "home/addbook";
         }
-        return "home/addconfirmation";
+        redirectAttributes.addFlashAttribute("message", "Successfully Added");
+        bookDao.save(newBook);
+        redirectAttributes.addFlashAttribute("book", book);
+        return "redirect:bookconfirmation";
+    }
+
+    //View of Confirmation page (Flashmessage)
+    @RequestMapping(value="bookconfirmation", method=RequestMethod.GET)
+    public String bookconfirmation(Model model){
+        model.addAttribute("title", "Confirmation Page");
+        return "home/bookconfirmation";
     }
 
     //View books in the library
