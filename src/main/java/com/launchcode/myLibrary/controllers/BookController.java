@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -55,4 +53,36 @@ public class BookController {
         return "home/index";
     }
 
+    //Delete a Book
+    @GetMapping("delete")
+    public String displaydelete(Model model) {
+        model.addAttribute("title", "Delete book");
+        model.addAttribute("books", bookDao.findAll());
+        return "home/delete";
+    }
+
+    //User selects which student to delete
+    //Selected student found in database
+    //Student removed from database
+    @PostMapping("delete")
+    public String processdeletestudentform(@RequestParam(required = false) int[] bookids,RedirectAttributes redirectAttributes, Book book) {
+        if (bookids != null) {
+            for (int id : bookids) {
+                bookDao.deleteById(id);
+                redirectAttributes.addFlashAttribute("book", book);
+            }
+            redirectAttributes.addFlashAttribute("message", "Successfully deleted");
+            return "redirect:deleteconfirmation";
+        }
+        return "home/delete";
+
+
+    }
+
+    //View of delete Confirmation page (Flashmessage)
+    @RequestMapping(value="deleteconfirmation", method=RequestMethod.GET)
+    public String deleteconfirmation(Model model, Book book,RedirectAttributes redirectAttributes){
+        model.addAttribute("title", "Bye Bye Book");
+        return "home/deleteconfirmation";
+    }
 }
