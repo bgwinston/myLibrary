@@ -49,7 +49,7 @@ public class BookController {
     @RequestMapping(value="index", method=RequestMethod.GET)
     public String displaybook(Model model){
         model.addAttribute("title","All books");
-        model.addAttribute("book",bookDao.findAll());
+        model.addAttribute("book",new Book());
         return "home/index";
     }
 

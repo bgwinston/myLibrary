@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container"></body>
+</br>
+</br>
+</br>
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+</br>
+<form th:object="${book}" method="post">
+   <div class="form-group" >
+        <label for="booktitle">Search by Title of Book</label>
+        <input type= "text" class="form-control" id="booktitle" />
+    </div>
+    </br>
+    </br>
+    <div class="form-group">
+        <label for="author">Search by Author</label>
+        <input type="text" class="form-control" id="author" />
+    </div>
+    </br>
+    </br>
+    <div class="form-group">
+        <label for="genre">Search by Genre</label>
+        <input type="text" class="form-control" id="genre"/>
+    </div>
+    <h5>Please include information for at least one of the above fields. </h5>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+
+
+
+
+</body>
+</html>
