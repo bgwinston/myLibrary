@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container"></body>
+</br>
+</br>
+</br>
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+</head>
+<body>
+<h6>Please click the link for the book or books  you would like to checkout</h6>
+</br>
+<p th:unless="${book} and ${book.size()}">No books found</p>
+<table class="table">
+
+    <tr>
+        <th>Title of Book</th>
+        <th>Author of Book</th>
+        <th>Genre of Book</th>
+        <th>Have you Read it?</th>
+        <th>Rating</th>
+
+    </tr>
+
+    <tr th:each="book : ${book}">
+        <input type="checkbox" name="bookids" th:value = "${book.id}" class="form-control">
+        <td><a th:href="'author/'+${book.getId()}" th:text="${book.titlebook}"></a><td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.genre}"></td>
+        <td th:text="${book.read1}"></td>
+        <td th:text="${book.rating}"></td>
+
+    </tr>
+
+</table>
+
+</body>
