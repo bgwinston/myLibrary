@@ -49,7 +49,7 @@ public class BookController {
     @RequestMapping(value="index", method=RequestMethod.GET)
     public String displaybook(Model model){
         model.addAttribute("title","All books");
-        model.addAttribute("book",new Book());
+        model.addAttribute("book",bookDao.findAll());
         return "home/index";
     }
 
@@ -70,19 +70,18 @@ public class BookController {
             for (int id : bookids) {
                 bookDao.deleteById(id);
                 redirectAttributes.addFlashAttribute("book", book);
+                redirectAttributes.addFlashAttribute("message", "Successfully deleted");
             }
-            redirectAttributes.addFlashAttribute("message", "Successfully deleted");
             return "redirect:deleteconfirmation";
         }
         return "home/delete";
 
-
     }
-
     //View of delete Confirmation page (Flashmessage)
     @RequestMapping(value="deleteconfirmation", method=RequestMethod.GET)
     public String deleteconfirmation(Model model, Book book,RedirectAttributes redirectAttributes){
         model.addAttribute("title", "Bye Bye Book");
+        model.addAttribute("book", bookDao.findAll());
         return "home/deleteconfirmation";
     }
 }
