@@ -65,12 +65,12 @@ public class BookController {
     //Selected student found in database
     //Student removed from database
     @PostMapping("delete")
-    public String processdeletestudentform(@RequestParam(required = false) int[] bookids,RedirectAttributes redirectAttributes, Book book) {
+    public String processdeletestudentform(@RequestParam(required = false) Book delbook, int[] bookids,RedirectAttributes redirectAttributes, Book book) {
         if (bookids != null) {
             for (int id : bookids) {
-                bookDao.deleteById(id);
                 redirectAttributes.addFlashAttribute("message", "You have successfully deleted");
-                redirectAttributes.addFlashAttribute("book", book);
+                redirectAttributes.addFlashAttribute("book", bookDao.findById(id));
+                bookDao.deleteById(id);
                 return "redirect:deleteconfirmation";
             }
         }
