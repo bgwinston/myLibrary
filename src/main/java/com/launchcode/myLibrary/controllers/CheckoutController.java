@@ -24,10 +24,16 @@ public class CheckoutController {
         return "home/checkout";
     }
 
-    @RequestMapping(value="results", method=RequestMethod.GET)
+    @RequestMapping(value="allbooks", method=RequestMethod.GET)
     public String displayResults(Model model){
-        model.addAttribute("title", "Search Results");
+        model.addAttribute("title", "All Books");
         model.addAttribute("book", bookDao.findAll());
-        return "checkout/results";
+        return "checkout/allbooks";
+    }
+
+    @RequestMapping(value= "selection", method= RequestMethod.GET)
+    public String displaySelection(Model model){
+        model.addAttribute("title","Check out");
+        return "checkout/selection";
     }
 }
