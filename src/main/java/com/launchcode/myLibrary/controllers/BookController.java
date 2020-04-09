@@ -65,7 +65,7 @@ public class BookController {
     //Selected student found in database
     //Student removed from database
     @PostMapping("delete")
-    public String processdeletestudentform(@RequestParam(required = false) Book delbook, int[] bookids,RedirectAttributes redirectAttributes, Book book) {
+    public String processdeletestudentform(@RequestParam(required = false) int[] bookids,RedirectAttributes redirectAttributes) {
         if (bookids != null) {
             for (int id : bookids) {
                 redirectAttributes.addFlashAttribute("message", "You have successfully deleted");
