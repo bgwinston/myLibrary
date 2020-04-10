@@ -26,13 +26,18 @@ public class CheckoutController {
     }
 
     @RequestMapping(value="allbooks", method=RequestMethod.GET)
-    public String displayResults(Model model){
+    public String displayall(Model model){
         model.addAttribute("title", "All Books");
         model.addAttribute("book", bookDao.findAll());
         return "checkout/allbooks";
     }
 
-    @RequestMapping(value= "selection", method= RequestMethod.POST)
+    /*@RequestMapping(value="allbooks", method=RequestMethod.GET)
+    public String all(Model model) {
+
+
+    }*/
+        @RequestMapping(value= "selection", method= RequestMethod.POST)
     public String Selection( int[] bookids, RedirectAttributes redirectAttributes) {
         if (bookids != null) {
             for (int id : bookids) {

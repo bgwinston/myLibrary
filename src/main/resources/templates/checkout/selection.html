@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:fragment="head">
-    <h1 th:text="${title}">Default Title</h1>
+<head th:replace="fragments :: head"></head>
+<body class="container"></body>
+</br>
+</br>
+</br>
+<h1 th:text="${title}">Default Title</h1>
+</br>
+</br>
+<nav th:replace="fragments :: navigation"></nav>
 </head>
 <body>
 <h3 th:text="${message}"></h3>
