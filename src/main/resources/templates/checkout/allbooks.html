@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<h6>Please click the link for the book or books  you would like to checkout</h6>
+<h6>Please click the link for the book or books you would like to checkout</h6>
 </br>
 <form method="post">
 <p th:unless="${book} and ${book.size()}">No books found</p>
@@ -35,8 +35,8 @@
         <td th:text="${book.rating}"></td>
 
     </tr>
-
 </table>
+    <button type="submit" class="btn btn-primary">Check Out</button>
 </form>
 
 </body>
