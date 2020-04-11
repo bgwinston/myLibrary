@@ -17,7 +17,7 @@ import java.awt.print.Book;
 public class CheckoutController {
     @Autowired
     private BookDao bookDao;
-    //Checkout b
+    //Checkout books
     @RequestMapping(value = "", method= RequestMethod.GET)
     public String displaycheckout(Model model){
         model.addAttribute("title","Check out Book");
