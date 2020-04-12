@@ -1,7 +1,6 @@
 package com.launchcode.myLibrary.controllers;
 
 import com.launchcode.myLibrary.models.Book;
-import com.launchcode.myLibrary.models.Data.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,7 @@ import javax.validation.Valid;
 @RequestMapping(value="home")
 public class BookController {
     @Autowired
-    private BookDao bookDao;
+    private com.launchcode.myLibrary.models.Data.bookDao bookDao;
 
     //Add book to the library
     @RequestMapping(value="addbook", method=RequestMethod.GET)
