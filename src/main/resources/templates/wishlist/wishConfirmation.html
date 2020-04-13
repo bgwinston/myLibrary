@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container"></body>
+</br>
+</br>
+</br>
+<h1 th:text="${title}">Default Title</h1>
+</br>
+</br>
+<nav th:replace="fragments :: navigation"></nav>
+</head>
+<body>
+<h3 th:text="${message}"></h3>
+<h3 th:text="${wish.titlebook}"></h3>
+</body>
+</html>

@@ -78,7 +78,7 @@ public class BookController {
     }
     //View of delete Confirmation page (Flashmessage)
     @RequestMapping(value="deleteconfirmation", method=RequestMethod.GET)
-    public String deleteconfirmation(Model model, Book book,RedirectAttributes redirectAttributes){
+    public String deleteconfirmation(Model model){
         model.addAttribute("title", "Bye Bye Book");
         return "home/deleteconfirmation";
     }
