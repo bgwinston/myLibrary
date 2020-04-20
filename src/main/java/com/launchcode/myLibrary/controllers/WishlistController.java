@@ -21,7 +21,7 @@ public class WishlistController {
 
     @RequestMapping(value="", method = RequestMethod.GET)
     public String displaywish (Model model){
-        model.addAttribute("title", "wishList");
+        model.addAttribute("title", "Add to Wishlist");
         model.addAttribute("wish", new Wish());
         return "wishlist/wishlist";
     }
@@ -41,5 +41,13 @@ public class WishlistController {
     public String wishconfirmation(Model model){
         model.addAttribute("title", "Confirmation Page");
         return "wishlist/wishConfirmation";
+    }
+
+    @RequestMapping (value= "wishlibrary", method = RequestMethod.GET)
+    public String displaywishindex(Model model){
+        model.addAttribute("title", "Wishlist");
+        model.addAttribute("wish", wishlistDao.findAll());
+        return"wishlist/wishlibrary";
+
     }
 }

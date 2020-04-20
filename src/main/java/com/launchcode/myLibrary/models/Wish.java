@@ -28,8 +28,7 @@ public class Wish {
 
     }
 
-    public Wish(int id, @Size(min = 2, max = 100) @NotNull String titlebook, @Size(min = 3, max = 75) @NotNull String author, @Size(min = 3, max = 20) @NotNull String genre) {
-        this.id = id;
+    public Wish(String titlebook, String author, String genre) {
         this.titlebook = titlebook;
         this.author = author;
         this.genre = genre;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container"></body>
+</br>
+</br>
+</br>
+<h1 th:text="${title}">Default Title</h1>
+
+<body class="container">
+<nav th:replace="fragments :: navigation"></nav>
+
+<p th:unless="${wish} and ${wish.size()}">No books in Library </p>
+
+<table class="table">
+
+    <tr>
+        <th>Title of Book</th>
+        <th>Author of Book</th>
+        <th>Genre of Book</th>
+
+
+    </tr>
+
+    <tr th:each="wish : ${wish}">
+        <td th:text="${wish.titlebook}"><td>
+        <td th:text="${wish.author}"></td>
+        <td th:text="${wish.genre}"></td>
+    </tr>
+
+</table>
+<!---<a href="/home/delete" type="button" class="btn btn-primary btn-sm btn-danger">Delete a book</a>-->
+
+</body>
+</html>
